@@ -1,5 +1,7 @@
 package com.fergusgolledge.controllers;
 
-public class FoodApi {
 
+@RestController
+public class FoodApi {
+	
 }
