@@ -35,9 +35,9 @@ public class FoodService {
 	
 //TODO move this into TagService
 	//get all food tags(fastfood, pasta, etc etc)
-	public List<Tag> getAllTags() {
-		return foodDao.getAllTags();
-	}
+//	public List<Tag> getAllTags() {
+//		return foodDao.getAllTags();
+//	}
 	
 	//get all foods by tag
 	public List<Food> getAllFoodsByTag(String tag) {

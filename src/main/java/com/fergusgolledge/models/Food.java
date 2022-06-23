@@ -2,6 +2,7 @@ package com.fergusgolledge.models;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,13 +16,15 @@ import javax.persistence.Table;
 public class Food {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "foodgen")
-	@SequenceGenerator(name = "foodgen", sequenceName = "food_seq", allocationSize = 1)
+//	@SequenceGenerator(name = "foodGen", sequenceName = "foodSeq", allocationSize = 1)
+//	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "foodGen")
+//	@Column(name = "id", nullable = false)
 	private int id;
 	private String name;
+	@Column(name = "COOKTIME")
 	private String cookTime;
 	private int price;
-	private boolean favourite;
+	private boolean favorite;
 	@ManyToMany
 	private List<Origin> origins;
 	private float stars;
@@ -29,19 +32,23 @@ public class Food {
 	@ManyToMany
 	private List<Tag> tags;
 
-	public Food(String name, String cookTime, int price, boolean favourite, List<Origin> origins, float stars,
+	public Food(String name, String cookTime, int price, boolean favorite, List<Origin> origins, float stars,
 			String imgUrl, List<Tag> tags) {
 		super();
 		this.name = name;
 		this.cookTime = cookTime;
 		this.price = price;
-		this.favourite = favourite;
+		this.favorite = favorite;
 		this.origins = origins;
 		this.stars = stars;
 		this.imgUrl = imgUrl;
 		this.tags = tags;
 	}
 
+	public int getId() {
+		return id;
+	}
+	
 	public String getName() {
 		return name;
 	}
@@ -66,19 +73,19 @@ public class Food {
 		this.price = price;
 	}
 
-	public boolean isFavourite() {
-		return favourite;
+	public boolean isFavorite() {
+		return favorite;
 	}
 
-	public void setFavourite(boolean favourite) {
-		this.favourite = favourite;
+	public void setFavorite(boolean favourite) {
+		this.favorite = favourite;
 	}
 
 	public List<Origin> getOrigins() {
 		return origins;
 	}
 
-	public void addOrigins(Origin origins) {
+	public void setOrigins(Origin origins) {
 		this.origins.add(origins);
 	}
 
@@ -90,11 +97,11 @@ public class Food {
 		this.stars = stars;
 	}
 
-	public String getImgUrl() {
+	public String getimgUrl() {
 		return imgUrl;
 	}
 
-	public void setImgUrl(String imgUrl) {
+	public void setimgUrl(String imgUrl) {
 		this.imgUrl = imgUrl;
 	}
 
@@ -104,10 +111,6 @@ public class Food {
 
 	public void setTags(Tag tags) {
 		this.tags.add(tags);
-	}
-
-	public int getId() {
-		return id;
 	}
 	
 	
